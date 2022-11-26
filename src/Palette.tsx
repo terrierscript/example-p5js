@@ -1,17 +1,23 @@
 import { FC, PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react"
-import p5 from "p5"
+import p5, { Color } from "p5"
+import { generateThree } from "./generateThree"
 
 const sketch = (p: p5) => {
+  const colors = generateThree(4, 4)
   p.setup = () => {
     p.createCanvas(300, 300)
     p.background(0)
-    p.fill(255)
+    p.noStroke()
+    colors.map(({ color, x, y, w, h }) => {
+      p.fill(color)
+      p.rect(x, y, w, h)
+    })
   }
 
   p.draw = () => {
   }
   p.mouseMoved = () => {
-    p.rect(p.mouseX, p.mouseY, 50, 50)
+    // p.rect(p.mouseX, p.mouseY, 50, 50)
   }
 }
 
