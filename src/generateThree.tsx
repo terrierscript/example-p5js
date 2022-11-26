@@ -1,17 +1,17 @@
 export const generateThree = (cellX: number, cellY: number) => {
-  const a = Array.from({ length: 10 })
-  const b = Array.from({ length: 10 })
-  const c = Array.from({ length: 10 })
-  return a.map((_, valA) => {
-    return b.map((_, valB) => {
-      return c.map((_, valC) => {
-        const h = valA / a.length * 360
-        const l = valB / b.length * 100
-        const s = valC / c.length * 100
+  const arrA = Array.from({ length: 4 })
+  const arrB = Array.from({ length: 4 })
+  const arrC = Array.from({ length: 4 })
+  return arrA.map((_, valA) => {
+    return arrB.map((_, valB) => {
+      return arrC.map((_, valC) => {
+        const h = (valA / (arrA.length - 1) * 360).toFixed(0)
+        const l = (valB / (arrB.length - 1) * 100).toFixed(3)
+        const s = (valC / (arrC.length - 1) * 100).toFixed(3)
         return {
           color: `hsl(${h},${l}%,${s}%)`,
-          x: (valA + valB) * cellX,
-          y: (valC) * cellY,
+          x: (valA) * cellX,
+          y: (valB + (valC * arrB.length)) * cellY,
           w: cellX,
           h: cellY
         }

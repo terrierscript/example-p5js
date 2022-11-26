@@ -3,11 +3,13 @@ import p5, { Color } from "p5"
 import { generateThree } from "./generateThree"
 
 const sketch = (p: p5) => {
-  const colors = generateThree(4, 4)
+  const colors = generateThree(10, 10)
+  console.log(colors)
   p.setup = () => {
     p.createCanvas(300, 300)
     p.background(0)
     p.noStroke()
+    p.stroke(255, 255, 0)
     colors.map(({ color, x, y, w, h }) => {
       p.fill(color)
       p.rect(x, y, w, h)
